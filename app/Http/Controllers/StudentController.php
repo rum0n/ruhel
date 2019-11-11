@@ -14,9 +14,8 @@ class StudentController extends Controller
      */
     public function index()
     {
-
         $students = Student::all();
-        return view('students.index',compact('students'));
+        return view('admin.students.index',compact('students'));
 
     }
 
@@ -28,7 +27,7 @@ class StudentController extends Controller
     public function create()
     {
         
-        return view('students.create');
+        return view('admin.students.create');
 
     }
 
@@ -77,7 +76,7 @@ class StudentController extends Controller
      */
     public function show(Student $student)
     {
-        return view('students.show',compact('student'));
+        return view('admin.students.show',compact('student'));
     }
 
     /**
@@ -90,7 +89,7 @@ class StudentController extends Controller
 
     public function edit(Student $student)
     {
-        return view('students.edit',compact('student'));
+        return view('admin.students.edit',compact('student'));
     }
 
 
@@ -143,7 +142,7 @@ class StudentController extends Controller
 
         $student->save();
 
-        return redirect('/students')->with('message','Wel done! Student profile updated successfully');
+        return redirect()->route('students.index')->with('message','Wel done! Student profile updated successfully');
     }
 
     /**

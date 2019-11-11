@@ -16,13 +16,14 @@ Route::get('/abc', function () {
 });
 */
 
- Route::get('/', 'HomeController@index');
+// Route::get('/', 'HomeController@index');
 // Route::get('/men/cloth','CategoryController@men_cloth');
 
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'AdminController@dashboard')->name('admin_dashboard');
 
 // Route::get('/inesrt/student', 'StudentController@insertStudent');
 // Route::post('/add/student', 'StudentController@addStudent');
