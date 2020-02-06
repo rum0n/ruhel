@@ -1,12 +1,12 @@
-@extends('layouts.app')
+@extends('admin.master')
 
 @section('content')
 
 
 <div class="container">
-		<div class="row">
+		<div class="row ml-5">
 
-			<div class="col-lg-12">
+			<div class="col-md-8 col-md-offset-2">
 				
 				<h3 style="color: blue;">{{ Session::get('message') }}</h3>
 				@if($errors->any())
@@ -49,5 +49,4 @@
 			</div>
 		</div>
 	</div>
-
-	@endsection
+@endsection

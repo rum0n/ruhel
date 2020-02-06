@@ -8,14 +8,14 @@
 		<div class="row ml-2">
 
 			<div class="col-lg-8 col-md-offset-2">
-				@if($errors->all())
-	            	<div class="alert alert-danger">
-		                @foreach($errors->all() as $error)
-		                 <li>{{$error}}</li>  
-		                @endforeach
-              		</div>
-            	@endif
-				<h3 style="color: blue;">{{ Session::get('message') }}</h3>
+				{{--@if($errors->all())--}}
+	            	{{--<div class="alert alert-danger">--}}
+		                {{--@foreach($errors->all() as $error)--}}
+		                 {{--<li>{{$error}}</li>  --}}
+		                {{--@endforeach--}}
+              		{{--</div>--}}
+            	{{--@endif--}}
+				{{--<h3 style="color: blue;">{{ Session::get('message') }}</h3>--}}
 
 				<form action="{{ route('students.store') }}" method="post" enctype="multipart/form-data">
 					@csrf

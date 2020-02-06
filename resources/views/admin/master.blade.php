@@ -6,6 +6,7 @@
     <title>AdminLTE 3 | Dashboard</title>
     <!-- Tell the browser to be responsive to screen width -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Font Awesome -->
     <link rel="stylesheet" href="{{asset('admin/plugins')}}/fontawesome-free/css/all.min.css">
     <!-- Ionicons -->
@@ -31,6 +32,9 @@
     <link href="{{ asset('admin/assets/css') }}/css/style-responsive.css" rel="stylesheet">
     <link href="{{ asset('admin/assets/css') }}/style.css" rel="stylesheet">
 
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
+    @stack('css')
 
 </head>
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -49,3 +53,19 @@
     <!-- /.footer -->
     @include('admin.inc.footer')
     <!-- /.footer -->
+
+    <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+    {!! Toastr::message() !!}
+
+    <script>
+        @if($errors->any())
+            @foreach($errors->all() as $error)
+                  toastr.error('{{ $error }}','Error',{
+            closeButton:true,
+            progressBar:true,
+        });
+        @endforeach
+        @endif
+    </script>
+
+@stack('js')

@@ -6,11 +6,10 @@
 	<div class="container">
 		<div class="row">
 
-			<div class="col-md-6 col-md-offset-3" ><img src="{{ asset($student->pro_pic) }}" class="img-responsive img-thumbnail ml-5"></div>
+			<div class="col-md-6 col-md-offset-3 mt-2" ><img src="{{ asset($student->pro_pic) }}" class="img-responsive img-thumbnail ml-5" width="200"></div>
 		</div>
-		<div class="row ml-5">
-			<div>
-				<table class="table table-bordered table-hover table-responsive-lg">
+		<div class="ml-5 mr-5">
+				<table class="table table-bordered table-responsive d-md-table table-inverse">
 					<tr>
 						<th>Name</th><td>{{ $student->name }}</td>
 					</tr>
@@ -21,7 +20,7 @@
 						<th>Description</th><td>{{ $student->description }}</td>
 					</tr>
 				</table>
-				<div>
+				<div >
 
 					<a href="{{ route('students.edit',$student->id) }}" class="btn btn-md btn-primary" title="Edit Students">Edit</a>
 
@@ -30,7 +29,7 @@
 				</div>
 				<br><br>
 
-			</div>
+			
 		</div>
 
 	</div>

@@ -2,8 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use App\Student;
+use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
+
 
 class StudentController extends Controller
 {
@@ -39,22 +43,35 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request,[
-            'name'=>'required',
-            'batch'=>'required',
-        ]);
+
+         $this->validate($request,[
+             'name'=>'required',
+             'batch'=>'required',
+             'student_pic'=>'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+         ]);
 
         $newStudent = new Student();
 
-        $files = $request->student_pic;
-        
         if ($request->hasFile('student_pic')) {
+            $image = $request->file('student_pic');
 
-            $pic = $files->getClientOriginalName();
-            $fileName = time().$pic;
-            $files->move(public_path('images'),$fileName);
-            $fileName = 'images/'.$fileName;
-            $newStudent->pro_pic = $fileName;
+            $pic = $image->getClientOriginalName();
+            $input = time().$pic;
+
+            $destinationPath = public_path('/thumbnail');
+//            $destinationPath = public_path('/images/');
+
+            $img = Image::make($image->getRealPath());
+            $img->resize(100, 100, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath.'/'.$input);
+
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $input);
+
+            // $fileName = 'images/'.$fileName;
+
+            $newStudent->pro_pic =$input;
         }
 
         $newStudent->name = $request->name;
@@ -63,8 +80,9 @@ class StudentController extends Controller
 
         $newStudent->save();
 
-        
-        return redirect()->route('students.index')->with('message','Student Successfully saved');
+        Toastr::success('Tag Successfully Saved :)' ,'Success');
+
+        return redirect()->route('students.index');
 
     }
 
@@ -126,18 +144,37 @@ class StudentController extends Controller
         
         $files = $request->student_pic;
 
+
         if ($request->hasFile('student_pic')) {
+            $pic = $student->pro_pic;
+            $path_1 = public_path().'/images/'.$pic;
+            $path_2 = public_path().'/thumbnail/'.$pic;
 
-            if (file_exists($student->pro_pic)) {
-                unlink($student->pro_pic);
+            if (file_exists($path_1)) {
+                unlink($path_1);
             }
-            
-            $pic = $files->getClientOriginalName();
-            $fileName = time().$pic;
-            $files->move(public_path('images'),$fileName);
-            $fileName = 'images/'.$fileName;
 
-            $student->pro_pic = $fileName;
+            if (file_exists($path_2)) {
+                unlink($path_2);
+            }
+
+            $image = $request->file('student_pic');
+
+            $pic = $image->getClientOriginalName();
+            $input = time().$pic;
+
+            $destinationPath = public_path('/thumbnail');
+//            $destinationPath = public_path('/images/');
+
+            $img = Image::make($image->getRealPath());
+            $img->resize(100, 100, function ($constraint) {
+                $constraint->aspectRatio();
+            })->save($destinationPath.'/'.$input);
+
+            $destinationPath = public_path('/images');
+            $image->move($destinationPath, $input);
+
+            $student->pro_pic = $input;
         }
 
         $student->save();
@@ -151,20 +188,26 @@ class StudentController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Student $student)
+    public function destroy($id)
     {
-        // $student = Student::find($id);
-         
-        // return $student;
+        $student = Student::find($id);
+        $pic = $student->pro_pic;
+        $path_1 = public_path().'/images/'.$pic;
+        $path_2 = public_path().'/thumbnail/'.$pic;
 
-        if (file_exists($student->pro_pic)) {
-            unlink($student->pro_pic);
-            //echo($student->pro_pic);
+        if (file_exists($path_1)) {
+            unlink($path_1);
+            
+       }
+        if (file_exists($path_2)) {
+            unlink($path_2);
+
         }
 
-        // $studentDelete = Student::find($id);
+//        $studentDelete = Student::find($id);
         $student->delete();
 
+        Toastr::success('Successfully deleted :)' ,'Success');
         return redirect()->route('students.index')->with('message','Student successfully Deteted');
     }
     
