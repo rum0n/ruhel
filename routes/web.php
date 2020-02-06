@@ -10,11 +10,12 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-/*
-Route::get('/abc', function () {
-    return view('welcome');
-});
-*/
+
+//Route::get('ajax/add', function () {
+//
+//    return view('welcome');
+//});
+
 
 // Route::get('/', 'HomeController@index');
 // Route::get('/men/cloth','CategoryController@men_cloth');
@@ -41,6 +42,10 @@ Route::resource('students','StudentController');
 
 Route::get('/search', 'AdminController@search')->name('ajax');
 Route::get('/search/action', 'AdminController@action')->name('search.action');
+
+Route::get('/form', 'AdminController@ajax_add')->name('ajax.add');
+Route::post('/register', 'AdminController@ajax_store')->name('ajax.store');
+
 
 
 

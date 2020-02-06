@@ -35,6 +35,7 @@
             <div class="mt-3 mb-3">
                 <h1>Ajax</h1>
                 <a href="{{ route('ajax') }}" class="btn btn-md btn-primary"> <b> Ajax Search</b></a>
+                <a href="{{ route('ajax.add') }}" class="btn btn-md btn-info"> <b> Ajax Add</b></a>
             </div>
 
           <table class="table table-striped table-advance table-hover">

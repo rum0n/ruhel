@@ -14,7 +14,7 @@ class AdminController extends Controller
 {
     public function dashboard()
     {
-        $students = Student::get();
+        $students = Student::all();
         return view('admin.students.index',compact('students'));
     }
 
@@ -96,6 +96,19 @@ class AdminController extends Controller
     //=============Ajax Search Ends=================
 
 
+    public function ajax_add()
+    {
+        return view('ajax_form');
+    }
+
+    public function ajax_store(Request $request)
+    {
+        $v=20;
+        $a=$v+$request->lastname;
+        echo $a;
+
+        dd($request->all());
+    }
 
 
 }

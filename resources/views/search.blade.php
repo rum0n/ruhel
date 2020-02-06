@@ -60,6 +60,7 @@ $(document).ready(function(){
   fetch_customer_data(query);
  });
 });
+
 </script>
 
  </body>
