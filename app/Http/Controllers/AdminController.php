@@ -39,7 +39,7 @@ class AdminController extends Controller
          ->orWhere('batch', 'like', '%'.$query.'%')
          ->orWhere('description', 'like', '%'.$query.'%')
          ->get();
-         
+
       }
       else
       {
@@ -67,6 +67,9 @@ class AdminController extends Controller
          <td>
             <a href="'. url('students/'.$row->id).'" class="btn btn-success btn-xs ml-0" title="Edit Students">View</a>
          </td>
+         <td>
+            <a href="'. url('students/'.$row->id).'" class="btn btn-success btn-xs ml-0" title="Edit Students">View</a>
+         </td>
 
 
 
@@ -91,7 +94,7 @@ class AdminController extends Controller
      }
     }
     //=============Ajax Search Ends=================
-    
+
 
 
 
