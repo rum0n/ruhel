@@ -34,7 +34,6 @@
 
             <div class="mt-3 mb-3">
                 <h1>Ajax</h1>
-                <a href="{{ route('ajax_form') }}" class="btn btn-md btn-primary"> <b> Ajax Insert </b></a>
                 <a href="{{ route('ajax') }}" class="btn btn-md btn-primary"> <b> Ajax Search</b></a>
             </div>
 

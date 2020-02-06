@@ -65,8 +65,10 @@ class AdminController extends Controller
          </td>
 
          <td>
-         <a href="'. route('students.edit,'.$row->id).'" class="btn btn-success btn-xs ml-0" title="Edit Students">Delete</a>
+            <a href="'. url('students/'.$row->id).'" class="btn btn-success btn-xs ml-0" title="Edit Students">View</a>
          </td>
+
+
 
         </tr>
         ';
