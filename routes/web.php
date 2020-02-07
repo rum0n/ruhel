@@ -43,6 +43,8 @@ Route::resource('students','StudentController');
 Route::get('/search', 'AdminController@search')->name('ajax');
 Route::get('/search/action', 'AdminController@action')->name('search.action');
 
+//Route::delete('pic/{id}', 'AdminController@pic_delete')->name('pic');
+
 Route::get('/form', 'AdminController@ajax_add')->name('ajax.add');
 Route::post('/register', 'AdminController@ajax_store')->name('ajax.store');
 

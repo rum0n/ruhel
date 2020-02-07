@@ -407,6 +407,7 @@ class ComposerStaticInit97a3c40e36cccdd9a23b871f84c629ba
     public static $classMap = array (
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Group' => __DIR__ . '/../..' . '/app/Group.php',
         'App\\Http\\Controllers\\AdminController' => __DIR__ . '/../..' . '/app/Http/Controllers/AdminController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
         'App\\Http\\Controllers\\Auth\\LoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/LoginController.php',
@@ -429,7 +430,6 @@ class ComposerStaticInit97a3c40e36cccdd9a23b871f84c629ba
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\Student' => __DIR__ . '/../..' . '/app/Student.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
-        'App\\contact' => __DIR__ . '/../..' . '/app/contact.php',
         'Brian2694\\Toastr\\Facades\\Toastr' => __DIR__ . '/..' . '/brian2694/laravel-toastr/src/Facades/Toastr.php',
         'Brian2694\\Toastr\\Toastr' => __DIR__ . '/..' . '/brian2694/laravel-toastr/src/Toastr.php',
         'Brian2694\\Toastr\\ToastrServiceProvider' => __DIR__ . '/..' . '/brian2694/laravel-toastr/src/ToastrServiceProvider.php',

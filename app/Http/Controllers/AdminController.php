@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Group;
 use App\Student;
 use App\Teacher;
+use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Input;
@@ -72,7 +74,6 @@ class AdminController extends Controller
          </td>
 
 
-
         </tr>
         ';
        }
@@ -103,12 +104,30 @@ class AdminController extends Controller
 
     public function ajax_store(Request $request)
     {
-        $v=20;
-        $a=$v+$request->lastname;
-        echo $a;
-
         dd($request->all());
+        $donors = new Group();
+
+        $donors->name = $request->name;
+        $donors->blood_group = $request->bg;
+        $donors->donation_date = $request->donat_date;
+        $donors->address = $request->address;
+
+        $donors->save();
+
+        return redirect()->route('ajax');
+
     }
+
+//    public function pic_delete($id){
+//
+//        dd($id);
+//        Student::find($id)->delete($id);
+////        Student::find($id)->delete($id);
+//
+//        return response()->json([
+//            'success' => 'Record deleted successfully!'
+//        ]);
+//    }
 
 
 }

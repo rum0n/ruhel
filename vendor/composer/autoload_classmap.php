@@ -8,6 +8,7 @@ $baseDir = dirname($vendorDir);
 return array(
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Group' => $baseDir . '/app/Group.php',
     'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
     'App\\Http\\Controllers\\Auth\\LoginController' => $baseDir . '/app/Http/Controllers/Auth/LoginController.php',
@@ -30,7 +31,6 @@ return array(
     'App\\Providers\\RouteServiceProvider' => $baseDir . '/app/Providers/RouteServiceProvider.php',
     'App\\Student' => $baseDir . '/app/Student.php',
     'App\\User' => $baseDir . '/app/User.php',
-    'App\\contact' => $baseDir . '/app/contact.php',
     'Brian2694\\Toastr\\Facades\\Toastr' => $vendorDir . '/brian2694/laravel-toastr/src/Facades/Toastr.php',
     'Brian2694\\Toastr\\Toastr' => $vendorDir . '/brian2694/laravel-toastr/src/Toastr.php',
     'Brian2694\\Toastr\\ToastrServiceProvider' => $vendorDir . '/brian2694/laravel-toastr/src/ToastrServiceProvider.php',
